@@ -1,0 +1,696 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Client & Systems</h2>
+
+@section scripts {
+    @*<script src="~/Scripts/Controllers/ClientSystem/controller.js"></script>*@
+    
+}
+
+
+
+<div class="panel-body" ng-controller="dashboard">
+    <form name="form" class="form-horizontal" ng-validate="SubmitEmployees(data)" novalidate>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <br />
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-6 control-label">Client:</label>
+                                    <div class="col-xs-6">
+                                        <input name="first_name" type="text" class="form-control" ng-model="data.first_name" placeholder="First name" ng-required="true">
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.first_name.$error.required">Enter first name.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="row form-group">
+                                    <label class="col-xs-6 control-label">Client Division:</label>
+                                    <div class="col-xs-6">
+                                        <select class="form-control" name="type" ng-model="payment.type" required>
+                                            <option value="Cash">Cash</option>
+                                            <option value="Check">Check</option>
+                                            <option value="Money Order">Money Order</option>
+                                            <option value="Debit Card">Debit Card</option>
+                                            <option value="TEST">TEST</option>
+                                        </select>
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.type.$error.required">Select a type.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="row form-group">
+                                    <label class="col-xs-6 control-label">Client Cost Center:</label>
+                                    <div class="col-xs-6">
+                                        <select class="form-control" name="type" ng-model="payment.type" required>
+                                            <option value="Cash">Cash</option>
+                                            <option value="Check">Check</option>
+                                            <option value="Money Order">Money Order</option>
+                                            <option value="Debit Card">Debit Card</option>
+                                            <option value="TEST">TEST</option>
+                                        </select>
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.type.$error.required">Select a type.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-6 control-label">MS Name:</label>
+                                    <div class="col-xs-6">
+                                        <input name="last_name" type="text" class="form-control" ng-model="data.last_name" placeholder="Last name" ng-required="true">
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.last_name.$error.required">Enter last name.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-6 control-label">SBU/SDM:</label>
+                                    <div class="col-xs-6">
+                                        <textarea name="sbusdm" class="form-control" cols="3" rows="3" ng-model="application.notes" placeholder="SBU/SDM" ng-required="true"></textarea>
+                                        
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.username.$error.required">Enter username.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-6 control-label">Covered by DR Contract:</label>
+                                    <div class="col-xs-6">
+                                        <div class="btn-group" data-toggle="buttons">
+                                            <label class="btn btn-default">
+                                                <input type="radio" id="q156" name="quality[25]" value="yes" /> Yes
+                                            </label>
+                                            <label class="btn btn-default">
+                                                <input type="radio" id="q157" name="quality[25]" value="no" /> No
+                                            </label>
+                                        </div> 
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.password.$error.required">Enter password.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-6 control-label">H/W Warranty Information / Contract #:</label>
+                                    <div class="col-xs-6">
+                                        <input name="confirm_password" ng-model="data.confirm_password" class="form-control" placeholder="H/W Warranty Information / Contract #" ng-required="true" type="text" match="data.password" />
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.confirm_password.$error.required">Enter confirm password.</div>
+                                        <div ng-show="form.confirm_password.$error.mismatch">
+                                            <span class="alert alert-warning">Password and confirm password must match.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-6 control-label">Patching Group:</label>
+                                    <div class="col-xs-6">
+                                        <input name="value" type="text" class="form-control" ng-model="data.phone_number" placeholder="Patching Group" ng-mask="phone" required>
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.value.$error.required">Enter an phone number.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Reboot Description:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="0" ng-model="check_number" ng-mask="number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        //
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">S/W Support Vendor:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="S/W Support Vendor"   required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">System Name:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="System Name" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Serial Number:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Serial Number" ng-model="check_number" ng-mask="number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">MAC ADDRESS:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="MAC ADDRESS" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Server State:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Server State" ng-model="check_number"   required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Application/System Use:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Application/System Use" ng-model="check_number"   required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Asset Tag:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Asset Tag" ng-model="check_number"   required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Backup Client Agent NAME & Version:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Backup Client Agent NAME & Version" ng-model="check_number"   required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Backup Master:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Backup Master" ng-model="check_number"  required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Backup Type:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Backup Type" ng-model="check_number"  required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Comment field :</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Comment field " ng-model="check_number"  required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">CPU Cores per CPU:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="CPU Cores per CPU" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Number of CPUs:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Number of CPUs" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">CPU Sockets # :</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="CPU Sockets # " ng-model="check_number"  required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">CPU Speed (in MHz):</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="CPU Speed (in MHz)" ng-model="check_number"   required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">DataCenter Location:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="DataCenter Location" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">DNS Domain:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="DNS Domain" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Global Support Access Restriction:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Global Support Access Restriction" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Floor Location:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Floor Location" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Grid location:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Grid location" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Hardware Model:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Hardware Model" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Manufacturer:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Manufacturer" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">HostID (Used For SUN Servers Support):</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="HostID (Used For SUN Servers Support)" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Internal # Drives / Drive Capacity:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Internal # Drives / Drive Capacity" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">IP Address:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="IP Address" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Cluster Name:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Cluster Name" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Kernel Patch:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Kernel Patch" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Memory (GB):</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Memory (GB)" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Management Tools:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Management Tools" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Prescriptive Service Level:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Prescriptive Service Level" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Processor:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Processor" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-6 control-label">Initial Deployment Date:</label>
+                                    <div class="col-xs-6">
+                                        <div class="input-group date" ng-datepicker>
+                                            <input type="text" class="form-control" name="date_of_birth" ng-model="application.date_of_birth" required>
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.date_of_birth.$error.required">Initial Deployment Date.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-6 control-label">Purchase Date:</label>
+                                    <div class="col-xs-6">
+                                        <div class="input-group date" ng-datepicker>
+                                            <input type="text" class="form-control" name="date_of_birth" ng-model="application.date_of_birth" required>
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                        </div>
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.date_of_birth.$error.required">Purchase Date.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">RAID Level:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="RAID Level" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Room/Floor:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Room/Floor" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Network Space Storage - SAN Array Name:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Network Space Storage - SAN Array Name" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Network Space Storage Allocated (GB):</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Network Space Storage Allocated (GB)" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Functional Description :</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Functional Description " ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="row form-group">
+                                    <label class="col-xs-6 control-label">Server Category:</label>
+                                    <div class="col-xs-6">
+                                        <select class="form-control" name="type" ng-model="payment.type" required>
+                                            <option value="Cash">Cash</option>
+                                            <option value="Check">Check</option>
+                                            <option value="Money Order">Money Order</option>
+                                            <option value="Debit Card">Debit Card</option>
+                                            <option value="TEST">TEST</option>
+                                        </select>
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.type.$error.required">Select a Server Category.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="row form-group">
+                                    <label class="col-xs-6 control-label">Server Usage Type:</label>
+                                    <div class="col-xs-6">
+                                        <select class="form-control" name="type" ng-model="payment.type" required>
+                                            <option value="Cash">Cash</option>
+                                            <option value="Check">Check</option>
+                                            <option value="Money Order">Money Order</option>
+                                            <option value="Debit Card">Debit Card</option>
+                                            <option value="TEST">TEST</option>
+                                        </select>
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.type.$error.required">Select a Server Usage Type.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Street Address:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Street Address" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Support Organization:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Support Organization" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Support Team:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="Support Team" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">TimeZone:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="TimeZone" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">XEN-HOST:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="XEN-HOST" ng-model="check_number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                         
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row text-right">
+            <div class="col-xs-12">
+                <button class="btn btn-default" type="submit">
+                    <span ng-if="$edit"> <i class="fa fa-refresh"></i>  Update Employee </span>
+                    <span ng-if="!$edit"> <i class="fa fa-plus"></i>  Add Employee </span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,142 @@
+﻿tags-input *,
+*: before, *: after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+tags-input .host {
+  position: relative;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+tags-input .host: active {
+  outline: none;
+}
+tags-input .tags {
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+  padding: 2px;
+  overflow: hidden;
+  word-wrap: break-word;
+  cursor: text;
+  background-color: #aaaa;
+  border: 1px solid #aaaaaa;
+  box-shadow: 1px 1px 1px 0 lightgray inset;
+}
+tags-input .tags.focused {
+  outline: none;
+  border: 1px solid #E1E7EA;
+  /*-webkit-box-shadow: 0 0 3px 1px rgba(5, 139, 242, 0.6);
+  -moz-box-shadow: 0 0 3px 1px rgba(5, 139, 242, 0.6);
+  box-shadow: 0 0 3px 1px rgba(5, 139, 242, 0.6);*/
+}
+tags-input .tags .tag-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+tags-input .tags .tag-item {
+  padding: 3px 5px 3px 18px;
+  margin: 8px 4px 4px 6px;
+  position: relative;
+  line-height: 18px;
+  color: #333;
+  cursor: default;
+  border: 1px solid #aaaaaa;
+  border-radius: 5px;
+  background-clip: padding-box;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: #eee;
+  ;
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#f4f4f4', GradientType=0);
+background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(20%, #f4f4f4), color-stop(50%, #f0f0f0), color-stop(52%, #e8e8e8), color-stop(100%, #eee));
+background-image: -webkit-linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eee 100%);
+background-image: -moz-linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eee 100%);
+background-image: linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eee 100%);*/
+}
+tags-input .tags .tag-item.selected {
+  /*background: -webkit-linear-gradient(top, #febbbb 0%, #fe9090 45%, #ff5c5c 100%);
+  background: linear-gradient(to bottom, #febbbb 0%, #fe9090 45%, #ff5c5c 100%);*/
+}
+tags-input .tags .tag-item .remove-button {
+  display: block;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  right: 2px;
+  top: 1px;
+  cursor: pointer;
+  font-size: 1px;
+  outline: none;
+  background: url('https://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.png') right top no-repeat;
+}
+tags-input .tags .tag-item .remove-button: active {
+  color: red;
+}
+tags-input .tags .tag-item .remove-button: hover {
+  /*background-color: #aaaaaa;*/
+  background-position: right -12px;
+  cursor: pointer;
+}
+tags-input .tags .input {
+  border: 0;
+  outline: none;
+  margin: 2px;
+  padding: 0;
+  padding-left: 5px;
+  float: left;
+  height: 26px;
+  font: 14px sans-serif;
+}
+tags-input .tags .input.invalid-tag {
+  color: red;
+}
+tags-input .tags .input: : -ms-clear {
+  display: none;
+}
+tags-input.ng-invalid .tags {
+  border-radius: 0 0 4px 4px;
+  -webkit-box-shadow: 0 4px 5px rgba(0, 0, 0, .15);
+  box-shadow: 0 4px 5px rgba(0, 0, 0, .15);
+}
+tags-input .autocomplete {
+  margin-top: 5px;
+  position: absolute;
+  padding: 5px 0;
+  z-index: 999;
+  width: 100%;
+  background-color: #eee;
+  border: 1px;
+}
+tags-input .autocomplete .suggestion-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+tags-input .autocomplete .suggestion-item {
+  padding: 5px 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font: 16px"sans-serif";
+  color: black;
+  background-color: white;
+}
+tags-input .autocomplete .suggestion-item.selected {
+  color: white;
+  background-color: #0097cf;
+}
+tags-input .autocomplete .suggestion-item.selected em {
+  color: white;
+  background-color: #0097cf;
+}
+tags-input .autocomplete .suggestion-item em {
+  font: normal bold 16px"sans-serif";
+  color: black;
+  background-color: white;
+}

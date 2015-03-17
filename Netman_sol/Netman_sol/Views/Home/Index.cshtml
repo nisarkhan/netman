@@ -1,0 +1,138 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+} 
+
+@*<h2>Dashboard</h2>*@
+
+@section scripts {    
+    
+    <script src="~/Scripts/controllers/dashboard/controller.js"></script>
+    } 
+<div ng-controller="dashboard">
+
+    
+    <br />
+
+    <div class="container" >
+        <h3 class="row title">
+            <div class="col-xs-6"></div>
+            <div class="col-xs-6 text-right text-gray">{{ today | date:'MMMM d, y' }}</div>
+        </h3>
+    </div>
+
+        @*@Html.Partial("~/Views/Shared/partial/_stream.cshtml")
+        @Html.Partial("~/Views/Shared/partial/_make_loan_confirm.cshtml")
+        @Html.Partial("~/Views/Shared/partial/_drawer.cshtml")*@
+
+    <div class="container" ng-init="init()">
+        <!--menu bar-->
+        @*@Html.Partial("~/Views/Shared/partial/_menubar.cshtml")*@
+    </div>
+    <div class="container">
+        <h3 class="row title">
+            <div class="col-xs-12">Dashboard</div>
+        </h3>
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Tabs -->
+                <div class="panel panel-default">
+                    <h3 class="panel-heading">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active">
+                                <a href="#client_system" role="tab" data-toggle="tab">
+                                    <i class="fa fa-clock-o text-gray"></i>
+                                    Client & System
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#maintenance" role="tab" data-toggle="tab">
+                                    <i class="fa fa-pencil-square text-blue"></i>
+                                    Maintenance
+                                    <span class="badge" ng-show="applications.under_review.length > 0">{{applications.under_review.length}}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#system_compliance" role="tab" data-toggle="tab">
+                                    <i class="fa fa-check-square-o text-green"></i>
+                                    System & Compliance
+                                    <span class="badge" ng-show="applications.approved.length > 0">{{applications.approved.length}}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </h3>
+                    <div class="panel-body">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="client_system">
+                                @Html.Partial("~/Views/ClientSystem/index.cshtml")
+                            </div>
+                            <div class="tab-pane" id="maintenance">
+                                @Html.Partial("~/Views/Maintenance/index.cshtml")
+                            </div>
+                            <div class="tab-pane" id="system_compliance">
+                                @Html.Partial("~/views/SystemCompliance/index.cshtml")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Grid -->
+        <table ng-gridview="borrower" data-resource="$apigeonames" data-remote="http://api.geonames.org/countryInfoJSON?username=design1online" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th data-name="account_number">Account #</th>
+                    <th data-name="borrower">Borrower Name</th>
+                    <!--
+                <th data-name="phone_number_home">Home Phone</th>
+                <th data-name="phone_number_mobile">Cell Phone</th>
+                -->
+                    <th data-name="total_due" data-render="{{ total_due | currency }}"> Total Due</th>
+                    <th data-name="late_charge" data-render="{{ late_charge | currency }}"> Late Charge</th>
+                    <th data-name="nsf_charge" data-render="{{ nsf_charge | currency }}"> NSF Charge <i class="fa fa-question-circle text-light" data-toggle="tooltip" data-placement="top" ng-tooltip="Non-Sufficient Funds Charge"></i></th>
+                    <th data-name="maturity_interest" data-render="{{ maturity_interest | currency }}"> MIA <i class="fa fa-question-circle text-light" data-toggle="tooltip" data-placement="top" ng-tooltip="Maturity Interest Amount"></i> </th>
+                    <th data-name="$options" width="80">Options</th>
+                </tr>
+            </thead>
+        </table>
+
+        
+        <!--gridview check history-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <h3 class="panel-heading">
+                        Geo Locations
+                    </h3>                     
+                        <div class="panel-body">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="api_geo_names">
+                                    <table ng-gridview="api_geo_names" data-resource="$apigeonames" >
+                                        <thead>
+                                            <tr>
+                                                <th data-name="continent" data-width="50">Continent</th>
+                                                <th data-name="capital" data-width="75">Capital</th>
+                                                <th data-name="languages" data-width="160">Languages</th>
+                                                @*<th data-name="geonameId">GeonameId</th>*@
+                                                <th data-name="population">Population</th>
+                                                @*<th data-name="countryCode">countryCode</th>*@
+                                                <th data-name="countryName">Country Name</th>
+                                                <th data-name="continentName">Continent Name</th>
+                                                <th data-name="$options" data-width="160">Options</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+         </div>
+    </div>
+
+
+    
+</div>

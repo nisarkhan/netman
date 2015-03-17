@@ -1,0 +1,101 @@
+﻿@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Maintenance</h2>
+
+@section scripts {
+    @*<script src="~/Scripts/Controllers/ClientSystem/controller.js"></script>*@
+
+}
+<div class="panel-body" ng-controller="dashboard">
+    <form name="form" class="form-horizontal" ng-validate="SubmitEmployees(data)" novalidate>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <br /> 
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-6 control-label">Covered by DR Contract:</label>
+                                    <div class="col-xs-6">
+                                        <div class="btn-group" data-toggle="buttons">
+                                            <label class="btn btn-default">
+                                                <input type="radio" id="q156" name="quality[25]" value="yes" /> Yes
+                                            </label>
+                                            <label class="btn btn-default">
+                                                <input type="radio" id="q157" name="quality[25]" value="no" /> No
+                                            </label>
+                                        </div>
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.password.$error.required">Enter password.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-6 control-label">H/W Warranty Information / Contract #:</label>
+                                    <div class="col-xs-6">
+                                        <input name="confirm_password" ng-model="data.confirm_password" class="form-control" placeholder="H/W Warranty Information / Contract #" ng-required="true" type="text" match="data.password" />
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.confirm_password.$error.required">Enter confirm password.</div>
+                                        <div ng-show="form.confirm_password.$error.mismatch">
+                                            <span class="alert alert-warning">Password and confirm password must match.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-6 control-label">Patching Group:</label>
+                                    <div class="col-xs-6">
+                                        <input name="value" type="text" class="form-control" ng-model="data.phone_number" placeholder="Patching Group" ng-mask="phone" required>
+                                        <div class="alert alert-danger" ng-show="form.$submitted && form.value.$error.required">Enter an phone number.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">Reboot Description:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="0" ng-model="check_number" ng-mask="number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-6 control-label">S/W Support Vendor:</label>
+                                    <div class="col-xs-6">
+                                        <input type="text" class="form-control" placeholder="S/W Support Vendor" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row text-right">
+            <div class="col-xs-12">
+                <button class="btn btn-default" type="submit">
+                    <span ng-if="$edit"> <i class="fa fa-refresh"></i>  Update Maintenance </span>
+                    <span ng-if="!$edit"> <i class="fa fa-plus"></i>  Add Maintenance </span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
